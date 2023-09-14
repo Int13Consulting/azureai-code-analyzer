@@ -3,7 +3,7 @@
   "displayName": "AzureAI Security Code Analyzer",
   "description": "Use AzureAI to find vulnerabilities in your code.",
   "version": "0.0.2",
-  "publisher": "Int13Consulting",
+  "publisher": "Int13ConsultingInc",
   "icon": "images/logo.png",
   "repository": {
     "type": "git",
