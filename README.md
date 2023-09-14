@@ -1,6 +1,8 @@
-# ChatGPT Code Analyzer for Visual Studio Code
+# AzureAI Code Analyzer for Visual Studio Code
 
-The ChatGPT Code Analyzer is a Visual Studio Code extension that uses the OpenAI ChatGPT API to analyze your code and detect potential security vulnerabilities. The extension works with various file types and supports both single file and whole project analysis.
+This is a fork of ChatGPT code analyizer (https://github.com/MilindPurswani/chatgpt-code-analyzer#) updated to use the Azure AI APIs instead of ChatGPT.  The main benifit is it can now use private instances of Azure AI and operate entirely inside an enterprise firewall if desired.
+
+The AzureAI Code Analyzer is a Visual Studio Code extension that uses the OpenAI Azure API to analyze your code and detect potential security vulnerabilities. The extension works with various file types and supports both single file and whole project analysis.
 
 
 ## Features
@@ -10,12 +12,14 @@ The ChatGPT Code Analyzer is a Visual Studio Code extension that uses the OpenAI
 
 ## Installation
 
-Install the ChatGPT Code Analyzer extension from the Visual Studio Code Marketplace.
+Install the AzureAI Code Analyzer extension from the Visual Studio Code Marketplace.
 After installation, you will be prompted to enter your OpenAI API key. You can also set your API key by adding it to your settings.json file:
 
 ```json
 {
-  "chatgpt-code-analyzer.apiKey": "<your_api_key_here>"
+  "azureai-code-analyzer.apiKey": "<your_api_key_here>",
+  "azureai-code-analyzer.url": "<your azure instance url>",
+  "azureai-code-analyzer.deployment": "<your azure ai deployment name"
 }
 ```
 
@@ -36,7 +40,7 @@ After installation, you will be prompted to enter your OpenAI API key. You can a
 ## Requirements
 
 Visual Studio Code 1.60 or newer
-OpenAI API key
+AzureAI instance and API key
 
 ##  License
 This project is licensed under the MIT License.

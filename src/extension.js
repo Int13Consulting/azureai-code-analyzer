@@ -1,6 +1,6 @@
 const vscode = require('vscode');
-const callChatGPT = require('./chatgpt');
-const diagnosticCollection = vscode.languages.createDiagnosticCollection('chatgpt-code-analyzer');
+const callAzureAI = require('./azureai');
+const diagnosticCollection = vscode.languages.createDiagnosticCollection('azureai-code-analyzer');
 
 const path = require('path');
 const fs = require('fs');
@@ -76,8 +76,7 @@ async function analyzeDirectory(directoryPath) {
 
 async function analyzeAndApplyDiagnostics(filePath, text) {
   try {
-    const result = await callChatGPT(text);
-    openaiKey = 'asdasdaAAAXX233easas';
+    const result = await callAzureAI(text);
     // Parse the result and create diagnostics
     const diagnostics = [];
     const regex = /Line (\d+): (.+)/g;
@@ -109,20 +108,20 @@ async function analyzeAndApplyDiagnostics(filePath, text) {
 
 async function promptForApiKey() {
   const apiKey = await vscode.window.showInputBox({
-    placeHolder: 'Enter your ChatGPT API key',
-    prompt: 'Enter your ChatGPT API key to use the ChatGPT Code Analyzer',
+    placeHolder: 'Enter your AzureAI API key',
+    prompt: 'Enter your AzureAI API key to use the AzureAI Code Analyzer',
     password: true
   });
 
   if (apiKey) {
-    await vscode.workspace.getConfiguration().update('chatgpt-code-analyzer.apiKey', apiKey, vscode.ConfigurationTarget.Global);
+    await vscode.workspace.getConfiguration().update('azureai-code-analyzer.apiKey', apiKey, vscode.ConfigurationTarget.Global);
   } else {
     vscode.window.showWarningMessage('No API key provided, the extension will not work correctly without an API key.');
   }
 }
 
 function activate(context) {
-  let apiKey = vscode.workspace.getConfiguration().get('chatgpt-code-analyzer.apiKey');
+  let apiKey = vscode.workspace.getConfiguration().get('azureai-code-analyzer.apiKey');
   if (!apiKey || apiKey.trim() === "") {
     promptForApiKey();
   }

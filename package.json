@@ -1,13 +1,13 @@
 {
-  "name": "chatgpt-security-code-analyzer",
-  "displayName": "ChatGPT Security Code Analyzer",
-  "description": "Use ChatGPT to find vulnerabilities in your code.",
+  "name": "azureai-security-code-analyzer",
+  "displayName": "AzureAI Security Code Analyzer",
+  "description": "Use AzureAI to find vulnerabilities in your code.",
   "version": "0.0.2",
-  "publisher": "MilindPurswani",
+  "publisher": "Int13Consulting",
   "icon": "images/logo.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MilindPurswani/chatgpt-code-analyzer.git"
+    "url": "https://github.com/matthewmgamble/azureai-code-analyzer.git"
   },
   "engines": {
     "vscode": "^1.77.0"
@@ -16,8 +16,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.analyzeSecurity",
-    "onCommand:extension.analyzeWorkspace"
+   
   ],
   "main": "./src/extension.js",
   "contributes": {
@@ -31,13 +30,33 @@
         "title": "Analyze Workspace for Security Vulnerabilities"
       }
     ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.analyzeSecurity",
+          "group": "AzureCodeAnalyzer@1"
+        }
+      ]
+    },
     "configuration": {
-      "title": "ChatGPT Code Analyzer",
+      "title": "AzureAI Code Analyzer",
       "properties": {
-        "chatgpt-code-analyzer.apiKey": {
+        "azureai-code-analyzer.apiKey": {
           "type": "string",
           "default": "",
-          "description": "Your ChatGPT API key",
+          "description": "Your AzureAI API key",
+          "scope": "application"
+        },
+        "azureai-code-analyzer.url": {
+          "type": "string",
+          "default": "",
+          "description": "Your AzureAI instance URL",
+          "scope": "application"
+        },
+         "azureai-code-analyzer.deployment": {
+          "type": "string",
+          "default": "",
+          "description": "Your AzureAI deployment name",
           "scope": "application"
         }
       }
